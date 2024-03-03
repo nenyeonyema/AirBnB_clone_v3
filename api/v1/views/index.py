@@ -13,7 +13,7 @@ def status():
     return jsonify({"status": "OK"})
 
 
-@app_views.route('/api/v1/stats', methods=['GET'], strict_slashes=False)
+@app_views.route('/api/v1/stats', methods=['GET'])
 def get_stats():
     """Retrieve the number of each object by type"""
     stats = {

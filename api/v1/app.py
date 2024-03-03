@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Define a method to handle teardown app context """
-from flask import Flask
+from flask import Flask, jsonify
 from api.v1.views import app_views
 from models import storage
 import os
@@ -15,6 +15,12 @@ app.register_blueprint(app_views)
 def teardown_appcontext(exception):
     """Closes the storage connection"""
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """Handler for 404 errors."""
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == '__main__':
