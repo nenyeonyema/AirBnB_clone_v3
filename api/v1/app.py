@@ -1,4 +1,5 @@
-# api/v1/app.py
+#!/usr/bin/python3
+""" Define a method to handle teardown app context """
 from flask import Flask
 from api.v1.views import app_views
 from models import storage
@@ -10,7 +11,6 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 
 
-# Define a method to handle teardown app context
 @app.teardown_appcontext
 def teardown_appcontext(exception):
     """Closes the storage connection"""
