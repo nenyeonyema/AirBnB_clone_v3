@@ -7,6 +7,9 @@ import os
 
 app = Flask(__name__)
 
+# Allow CORS for all domains for now
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
+
 # Register the blueprint
 app.register_blueprint(app_views)
 
